@@ -1,6 +1,8 @@
 {{ config(
-    materialized = 'table'
+    materialized = 'table',
+
 ) }}
+
 
 WITH house_data AS (
     SELECT 
@@ -15,11 +17,11 @@ WITH house_data AS (
         "Baxısh" AS baxış,
         "Elan" AS elan
     FROM {{ ref('house_data') }} h
-    JOIN {{ ref('dim_date') }} d ON h."Tarix" = d.tarix
-    JOIN {{ ref('dim_kategoriya') }} k ON h."Kategoriya" = k.kateqoriya
-    JOIN {{ ref('dim_mərtəbə') }} m ON h."Mertebe" = m.mərtəbə AND h."Umumi Mertebe sayi" = m.ümumi_mərtəbə_sayı
-    JOIN {{ ref('dim_otaq_sayı') }} o ON h."Otag sayı" = o.otaq_sayı
-    JOIN {{ ref('dim_çıxarış') }} c ON h."Çıxarısh" = c.çıxarış
-    JOIN {{ ref('dim_adres') }} a ON h."Adres" = a.adres
+    LEFT JOIN {{ ref('dim_date') }} d ON h."Tarix" = d.tarix
+    LEFT JOIN {{ ref('dim_kategoriya') }} k ON h."Kategoriya" = k.kateqoriya
+    LEFT JOIN {{ ref('dim_mərtəbə') }} m ON h."Mertebe" = m.mərtəbə AND h."Umumi Mertebe sayi" = m.ümumi_mərtəbə_sayı
+    LEFT JOIN {{ ref('dim_otaq_sayı') }} o ON h."Otag sayı" = o.otaq_sayı
+    LEFT JOIN {{ ref('dim_çıxarış') }} c ON h."Çıxarısh" = c.çıxarış
+    LEFT JOIN {{ ref('dim_adres') }} a ON h."Adres" = a.adres
 )
 SELECT * FROM house_data

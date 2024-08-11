@@ -1,12 +1,14 @@
-
 {{ config(
-    materialized = 'table'
+    materialized = 'table',
+    post_hook = ["DROP INDEX IF EXISTS idx_tarix_id;",
+    "CREATE INDEX idx_tarix_id ON {{ this }} (tarix_id);"]
 ) }}
 
 WITH date_data AS (
     SELECT DISTINCT
-            ROW_NUMBER() OVER (ORDER BY "Tarix") AS tarix_id,
         "Tarix" AS tarix
     FROM {{ ref('house_data') }}
 )
-SELECT * FROM date_data
+SELECT
+ *, ROW_NUMBER() OVER (ORDER BY tarix) AS tarix_id
+ FROM date_data
