@@ -15,7 +15,8 @@ WITH house_data AS (
         a.adres_id,
         "Qiymet" AS qiymət,
         "Baxısh" AS baxış,
-        "Elan" AS elan
+        "Elan" AS elan,
+        "Sahe" AS sahə
     FROM {{ ref('house_data') }} h
     LEFT JOIN {{ ref('dim_date') }} d ON h."Tarix" = d.tarix
     LEFT JOIN {{ ref('dim_kategoriya') }} k ON h."Kategoriya" = k.kateqoriya
