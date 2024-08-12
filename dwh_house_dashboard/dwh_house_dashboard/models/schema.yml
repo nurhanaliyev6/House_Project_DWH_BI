@@ -1,0 +1,152 @@
+version: 2
+
+models:
+  - name: dim_kateqoriya
+    description: "Dimension table for property categories."
+    columns:
+      - name: kateqoriya_id
+        description: "Primary key. Unique identifier for each category."
+        tests:
+          - unique
+          - not_null
+      - name: kateqoriya
+        description: "Name of the property category (e.g., Apartment, Villa)."
+        tests:
+          - not_null
+
+  - name: dim_tarix
+    description: "Dimension table for dates."
+    columns:
+      - name: tarix_id
+        description: "Primary key. Unique identifier for each date."
+        tests:
+          - unique
+          - not_null
+      - name: tarix
+        description: "Date in the format YYYY-MM-DD."
+
+
+  - name: dim_mərtəbə
+    description: "Dimension table for floor levels."
+    columns:
+      - name: mərtəbə_id
+        description: "Primary key. Unique identifier for each floor level."
+        tests:
+          - unique
+          - not_null
+      - name: mərtəbə
+        description: "Floor level number."
+        tests:
+          - not_null
+      - name: ümumi_mərtəbə_sayı
+        description: "Number of Floors in Apartment."
+        tests:
+          - not_null
+
+  - name: dim_otaq_sayı
+    description: "Dimension table for the number of rooms."
+    columns:
+      - name: otaq_sayı_id
+        description: "Primary key. Unique identifier for each room count."
+        tests:
+          - unique
+          - not_null
+      - name: otaq_sayı
+        description: "Number of rooms."
+        tests:
+          - not_null
+
+  - name: dim_çıxarış
+    description: "Dimension table for property titles."
+    columns:
+      - name: çıxarış_id
+        description: "Primary key. Unique identifier for each property title."
+        tests:
+          - unique
+          - not_null
+      - name: çıxarış
+        description: "Title status (e.g., Yes, No)."
+        tests:
+          - not_null
+
+  - name: dim_adres
+    description: "Dimension table for addresses."
+    columns:
+      - name: adres_id
+        description: "Primary key. Unique identifier for each address."
+        tests:
+          - unique
+          - not_null
+      - name: adres
+        description: "Address information."
+        tests:
+          - not_null
+
+  - name: fact_house
+    description: "Fact table for house listings."
+    columns:
+      - name: house_id
+        description: "Primary key. Unique identifier for each house listing."
+        tests:
+          - unique
+          - not_null
+      - name: qiymət
+        description: "Price of the house."
+        tests:
+          - not_null
+      - name: baxış
+        description: "Number of views the house listing has received."
+        tests:
+          - not_null
+      - name: elan
+        description: "Listing description or title."
+        tests:
+          - not_null
+      - name: sahə
+        description: "Area of the house in square meters."
+        tests:
+          - not_null
+      - name: tarix_id
+        description: "Foreign key linking to the dim_date table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_tarix')
+              field: tarix_id
+      - name: kateqoriya_id
+        description: "Foreign key linking to the dim_kateqoriya table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_kateqoriya')
+              field: kateqoriya_id
+      - name: mərtəbə_id
+        description: "Foreign key linking to the dim_mərtəbə table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_mərtəbə')
+              field: mərtəbə_id
+      - name: otaq_sayı_id
+        description: "Foreign key linking to the dim_otaq_sayı table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_otaq_sayı')
+              field: otaq_sayı_id
+      - name: çıxarış_id
+        description: "Foreign key linking to the dim_çıxarış table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_çıxarış')
+              field: çıxarış_id
+      - name: adres_id
+        description: "Foreign key linking to the dim_adres table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_adres')
+              field: adres_id
+
+

@@ -18,8 +18,8 @@ WITH house_data AS (
         "Elan" AS elan,
         "Sahe" AS sahə
     FROM {{ ref('house_data') }} h
-    LEFT JOIN {{ ref('dim_date') }} d ON h."Tarix" = d.tarix
-    LEFT JOIN {{ ref('dim_kategoriya') }} k ON h."Kategoriya" = k.kateqoriya
+    LEFT JOIN {{ ref('dim_tarix') }} d ON h."Tarix" = d.tarix
+    LEFT JOIN {{ ref('dim_kateqoriya') }} k ON h."Kategoriya" = k.kateqoriya
     LEFT JOIN {{ ref('dim_mərtəbə') }} m ON h."Mertebe" = m.mərtəbə AND h."Umumi Mertebe sayi" = m.ümumi_mərtəbə_sayı
     LEFT JOIN {{ ref('dim_otaq_sayı') }} o ON h."Otag sayı" = o.otaq_sayı
     LEFT JOIN {{ ref('dim_çıxarış') }} c ON h."Çıxarısh" = c.çıxarış
