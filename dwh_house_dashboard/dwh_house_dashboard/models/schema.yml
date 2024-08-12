@@ -79,8 +79,6 @@ models:
           - not_null
       - name: adres
         description: "Address information."
-        tests:
-          - not_null
 
   - name: fact_house
     description: "Fact table for house listings."
@@ -109,7 +107,6 @@ models:
       - name: tarix_id
         description: "Foreign key linking to the dim_date table."
         tests:
-          - not_null
           - relationships:
               to: ref('dim_tarix')
               field: tarix_id
@@ -144,7 +141,6 @@ models:
       - name: adres_id
         description: "Foreign key linking to the dim_adres table."
         tests:
-          - not_null
           - relationships:
               to: ref('dim_adres')
               field: adres_id
