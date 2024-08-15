@@ -2,6 +2,9 @@ Welcome to your new dbt project!
 
 ### Using the starter project
 
+First run below command to store raw dataset(house_data.csv) to Postgresql:
+- dbt seed
+
 Try running the following commands:
 - dbt run
 - dbt test
