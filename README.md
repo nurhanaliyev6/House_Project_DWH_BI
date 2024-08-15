@@ -5,6 +5,8 @@
 
 ### Overview
 This project is an end-to-end data engineering solution designed for managing and analyzing house listings data. It covers the entire pipeline from data extraction to transformation, loading (ETL), and visualization. The project uses dbt for data transformations, PostgreSQL for implementing the data warehouse (DWH), and Power BI for creating a dynamic dashboard.
+Note: [Data is extracted in this repo.](https://github.com/nurhanaliyev6/House-Data-ETL-Project)
+
 
 ### Project Structure
 **seeds/house_data.csv**: The extracted dataset from yeniemlak.az containing house listings data. <br>
