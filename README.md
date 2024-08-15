@@ -81,6 +81,10 @@ The Power BI dashboard allows users to gain insights into the real estate market
 
 ![Screenshot (429)](https://github.com/user-attachments/assets/916d44cf-4fdb-4902-94fd-6ae9adcdcf1c)
 
+[Dashboard link(click me)](https://app.powerbi.com/links/p23HvgFOs6?ctid=a830f566-8c60-43cf-9f13-939301bec745&pbi_source=linkShare)
+
+
+
 
 
 
